@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://enigmatic-peak-06088.herokuapp.com/'
+  apiUrl: 'https://spring-angular-frontend-shop.herokuapp.com/'
 };
