@@ -5,7 +5,7 @@ import { Product } from '../interface/product';
 import { map } from 'rxjs/operators';
 import { Category } from '../interface/category';
 import { NumberValueAccessor } from '@angular/forms';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
