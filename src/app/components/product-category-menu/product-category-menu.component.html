@@ -1,15 +1,28 @@
-<div class="menu-sidebar-content js-scrollbar1">
-    <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar-list">
 
-            <li *ngFor="let tempProductCategory of productCategories">
-
-                <a routerLink="/category/{{ tempProductCategory.id }}" routerLinkActive="active-link">
-                    {{ tempProductCategory.name }}
-                </a>
-
-            </li>
-
+<h1 class="h2 pb-4">Categories</h1>
+<ul class="list-unstyled templatemo-accordion">
+    <li class="pb-3">
+        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+            Płeć
+            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+        </a>
+        <ul class="collapse show list-unstyled pl-3">
+            <li><a class="text-decoration-none" (click)="genderProducts('Woman')">Kobieta</a></li>
+            <li><a class="text-decoration-none" (click)="genderProducts('Man')">Mężczyzna</a></li>
+            <li><a class="text-decoration-none" (click)="genderProducts('Child')">Dzieci</a></li>
         </ul>
-    </nav>
-</div>
+    </li>
+    <li class="pb-3">
+        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+            Kategoria
+            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+        </a>
+        <ul class="collapse show list-unstyled pl-3">
+            <li *ngFor="let tempProductCategory of productCategories">
+                <a class="text-decoration-none" (click)="kategoriaProducts(tempProductCategory.id_category)">
+                    {{tempProductCategory.name}}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

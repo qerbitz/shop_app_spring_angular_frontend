@@ -60,7 +60,7 @@ export class CartService {
 
   computeCartTotals() {
 
-    let totalPriceValue: number = 0;
+    let totalPriceValue: number = 1;
     let totalQuantityValue: number = 0;
 
     for (let currentCartItem of this.cartItems) {
@@ -71,6 +71,9 @@ export class CartService {
     // publish the new values ... all subscribers will receive the new data
     this.totalPrice.next(totalPriceValue);
     this.totalQuantity.next(totalQuantityValue);
+
+    console.log(totalPriceValue);
+    console.log(totalQuantityValue);
 
     this.persistCartItems();
   }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { User } from '../interface/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -15,6 +15,8 @@ export class AuthenticationService {
   private loggedInUsername: string;
   private jwtHelper = new JwtHelperService();
 
+  public isUserLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
   public login(user: User): Observable<HttpResponse<User>> {
@@ -28,6 +30,7 @@ export class AuthenticationService {
   public logOut(): void {
     this.token = null;
     this.loggedInUsername = null;
+    this.isUserLogged.next(false);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('users');
@@ -39,6 +42,7 @@ export class AuthenticationService {
   }
 
   public addUserToLocalCache(user: User): void {
+    this.isUserLogged.next(true);
     localStorage.setItem('user', JSON.stringify(user));
   }
 

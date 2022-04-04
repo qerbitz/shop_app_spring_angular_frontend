@@ -1,0 +1,57 @@
+
+
+
+<div class="container-fluid">
+    <div class="row mx-5 px-5 py-5 pb-5">
+        <aside class="col-lg-8">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Ilośc</th>
+                                <th scope="col" width="120">Cena</th>
+                                <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of order.orderItems">
+                                <td>
+                                    <figure class="itemside align-items-center">
+                                        <div class="aside"><img src="{{item.product.image}}" class="img-sm"></div>
+                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ item.product.name }}</a>
+                                            <p class="text-muted small">SIZE: L <br> Brand: MAXTRA</p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> <select class="form-control" disabled>
+                                        <option selected>{{item.quantity}}</option>
+                                    </select> </td>
+                                <td>
+                                    <div class="price-wrap"> <var class="price">{{item.quantity * item.product.price}} zł</var> <small class="text-muted">{{item.product.price}}  zł za każdy</small> </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+        <aside class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <dl class="dlist-align">
+                        <dt>Łączna ilość: </dt>
+                        <dd class="text-right ml-3"> {{order.totalQuantity}}</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt>Łączna suma:</dt>
+                        <dd class="text-right text-dark b ml-3"><strong> {{order.totalPrice}} zł</strong></dd>
+                    </dl>
+                    <hr>
+                     <a routerLink="/products" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Kontynuj zakupy</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductService } from './services/product.service';
+import { NotificationService } from './services/notification.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
@@ -22,12 +23,20 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { UserService } from './services/user.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { UserOrdersListComponent } from './components/user-orders-list/user-orders-list.component';
+import { UserOrderDetailsComponent } from './components/user-order-details/user-order-details.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NotificationModule } from './notification.module';
+
 
 const routes: Routes = []
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     LoginComponent,
     RegisterComponent,
     ProductListComponent,
@@ -37,7 +46,11 @@ const routes: Routes = []
     CartStatusComponent,
     CartDetailsComponent,
     ProductDetailsComponent,
-    CheckoutComponent  
+    CheckoutComponent,
+    ContactComponent,
+    UserOrdersListComponent,
+    UserOrderDetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +58,10 @@ const routes: Routes = []
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationModule
   ],
-  providers: [AuthenticationGuard, AuthenticationService, ProductService, UserService,
+  providers: [NotificationService, AuthenticationGuard, AuthenticationService, ProductService, UserService,
   { 
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
   }],
