@@ -47,7 +47,6 @@ export class ProductListComponent implements OnInit {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
     this.categoryMode = this.route.snapshot.paramMap.has('category');
 
-    console.log("pierwsza");
     console.log(this.route.snapshot.paramMap);
 
     if (this.searchMode) {
@@ -74,10 +73,10 @@ export class ProductListComponent implements OnInit {
   public handleCategoryProducts() {
     const category_id: string = this.route.snapshot.paramMap.get('category');
     const gender: string = this.route.snapshot.paramMap.get('gender');
-
+    const price: string = this.route.snapshot.paramMap.get('price');
 
     this.productService.getProductListByCategory(this.thePageNumber - 1,
-      this.thePageSize, category_id, gender, this.sort_option).subscribe(
+      this.thePageSize, category_id, gender, price, this.sort_option).subscribe(
         this.processResult());    
   }
 

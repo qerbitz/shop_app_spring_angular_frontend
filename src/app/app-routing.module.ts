@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'search/:keyword', component: ProductListComponent },
-  { path: 'filter/:category/:gender', component: ProductListComponent },
+  { path: 'filter/:category/:gender/:price', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'category', component: ProductListComponent },

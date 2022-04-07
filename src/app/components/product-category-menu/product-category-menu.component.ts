@@ -3,6 +3,7 @@ import { Category } from 'src/app/interface/category';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product-category-menu',
@@ -14,7 +15,8 @@ export class ProductCategoryMenuComponent implements OnInit {
   productCategories: Category[];
   actual_category: string = "0";
   actual_gender: string = "all";
-  actual_price: string = "0";
+  actual_price: string = "0-10000";
+
   
   constructor(
     private productService: ProductService,
@@ -31,26 +33,24 @@ export class ProductCategoryMenuComponent implements OnInit {
         this.productCategories = data;
       }
     );
+
   }
 
   public kategoriaProducts(key: string) {
     this.actual_category = key;
-    console.log(`kategoriapobrana= ${key}`);
-    console.log('ten teges'+this.actual_category);
-    this.router.navigateByUrl(`/filter/${this.actual_category}/${this.actual_gender}`);
+    this.router.navigateByUrl(`/filter/${this.actual_category}/${this.actual_gender}/${this.actual_price}`);
 
   }
 
-  public genderProducts(key: string) {
-    this.actual_gender=key;
-    console.log(`plec pobrana= ${key}`);
-    this.router.navigateByUrl(`/filter/${this.actual_category}/${this.actual_gender}`);
+  public genderProducts(gender: string) {
+    this.actual_gender=gender;
+
+    this.router.navigateByUrl(`/filter/${this.actual_category}/${this.actual_gender}/${this.actual_price}`);
   }
 
-  public priceProducts(key: string) {
-    this.actual_price=key;
-    console.log(`kwotapobrana= ${key}`);
-    this.router.navigateByUrl(`/filterByPrice/${this.actual_category}/${this.actual_price}`);
+  public priceProducts(price: string) {
+    this.actual_price=price;
+    this.router.navigateByUrl(`/filter/${this.actual_category}/${this.actual_gender}/${this.actual_price}`);
   }
 
 

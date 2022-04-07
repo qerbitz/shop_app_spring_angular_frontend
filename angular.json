@@ -30,8 +30,10 @@
               "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
+              "src/scripts.js",
               "./node_modules/@popperjs/core/dist/umd/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+
             ]
           },
           "configurations": {

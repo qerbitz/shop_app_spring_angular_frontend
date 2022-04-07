@@ -1,7 +1,4 @@
-
-
-
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="cartItems.length != 0">
     <div class="row mx-5 px-5 py-5 pb-5">
         <aside class="col-lg-8">
             <div class="card">
@@ -20,7 +17,8 @@
                                 <td>
                                     <figure class="itemside align-items-center">
                                         <div class="aside"><img src="{{tempCartItem.imager}}" class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{tempCartItem.name}}</a>
+                                        <figcaption class="info"> <a href="#" class="title text-dark"
+                                                data-abc="true">{{tempCartItem.name}}</a>
                                             <p class="text-muted small">SIZE: L <br> Brand: </p>
                                         </figcaption>
                                     </figure>
@@ -32,9 +30,12 @@
                                         <option>4</option>
                                     </select> </td>
                                 <td>
-                                    <div class="price-wrap"> <var class="price">{{tempCartItem.quantity * tempCartItem.unitPrice}} zł</var> <small class="text-muted"> {{tempCartItem.unitPrice}} zł za każdy</small> </div>
+                                    <div class="price-wrap"> <var class="price">{{tempCartItem.quantity *
+                                            tempCartItem.unitPrice}} zł</var> <small class="text-muted">
+                                            {{tempCartItem.unitPrice}} zł za każdy</small> </div>
                                 </td>
-                                <td class="text-right d-none d-md-block"><a (click)="remove(tempCartItem)" class="btn btn-danger" data-abc="true"> Usuń</a> </td>
+                                <td class="text-right d-none d-md-block"><a (click)="remove(tempCartItem)"
+                                        class="btn btn-danger" data-abc="true"> Usuń</a> </td>
                             </tr>
                         </tbody>
                     </table>
@@ -52,9 +53,12 @@
                         <dt>Łączna suma: </dt>
                         <dd class="text-right text-dark b ml-3"><strong>{{ totalPrice }} zł</strong></dd>
                     </dl>
-                    <hr> <a routerLink="/checkout" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Zamów </a>
-                     <a routerLink="/products" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Kontynuj zakupy</a>
-                     <a href="#" class="btn btn-out btn-warning btn-square btn-main mt-2" data-abc="true">Wyczysc koszyk</a>
+                    <hr> <a routerLink="/checkout" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">
+                        Zamów </a>
+                    <a routerLink="/products" class="btn btn-out btn-success btn-square btn-main mt-2"
+                        data-abc="true">Kontynuj zakupy</a>
+                    <a href="#" class="btn btn-out btn-warning btn-square btn-main mt-2" data-abc="true">Wyczysc
+                        koszyk</a>
                 </div>
             </div>
         </aside>
@@ -63,6 +67,23 @@
 
 
 <!-- if cart is empty then display a message -->
-<div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" role="alert">
-    Your shopping cart is empty. 
+<div *ngIf="cartItems.length == 0">
+    <div class="container-fluid mt-100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="card-header2">
+                    </div>
+                    <div class="card-body2 cart">
+                        <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png"
+                                width="130" height="130" class="img-fluid mb-4 mr-3">
+                            <h3><strong>Twój koszyk jest pusty</strong></h3>
+                             <a routerLink="products"
+                                class="btn btn-primary cart-btn-transform m-3" data-abc="true">Kontynuuj zakupy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

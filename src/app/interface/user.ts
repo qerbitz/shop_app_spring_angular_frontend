@@ -2,6 +2,8 @@ export class User {
     public userId: string;
     public username: string;
     public email: string;
+    public firstName: string;
+    public lastName: string;
     public password: string;
     public lastLoginDate: Date;
     public lastLoginDateDisplay: Date;

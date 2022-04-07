@@ -1,4 +1,3 @@
-
 <h1 class="h2 pb-4">Categories</h1>
 <ul class="list-unstyled templatemo-accordion">
     <li class="pb-3">
@@ -12,6 +11,7 @@
             <li><a class="text-decoration-none" (click)="genderProducts('Child')">Dzieci</a></li>
         </ul>
     </li>
+
     <li class="pb-3">
         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
             Kategoria
@@ -25,4 +25,34 @@
             </li>
         </ul>
     </li>
+
+    <li class="pb-3">
+        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+            Cena
+            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+        </a>
+        <ul class="collapse show list-unstyled pl-3">
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie" (click)="priceProducts('0-20')">
+                <label for="louie"> 0 - 20 zł</label>
+            </div>
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie" (click)="priceProducts('20-50')">
+                <label for="louie"> 20 - 50 zł</label>
+            </div>
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie" (click)="priceProducts('50-100')">
+                <label for="louie"> 50 - 100 zł</label>
+            </div>
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie" (click)="priceProducts('100-200')">
+                <label for="louie"> 100 - 200 zł</label>
+            </div>
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie" (click)="priceProducts('200-1000')">
+                <label for="louie"> 200+ zł</label>
+            </div>
+        </ul>
+    </li>
+
 </ul>

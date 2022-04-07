@@ -22,12 +22,6 @@ export class CheckoutComponent implements OnInit {
   totalQuantity: number = 0;
   storage: Storage = sessionStorage;
 
-  // initialize Stripe API
-
-  cardElement: any;
-  displayError: any = "";
-
-  isDisabled: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private cartService: CartService,
@@ -38,6 +32,21 @@ export class CheckoutComponent implements OnInit {
 
    this.cartItems = this.cartService.cartItems;
    this.reviewCartDetails();
+
+
+
+   this.checkoutFormGroup = this.formBuilder.group({
+    customer: this.formBuilder.group({
+      firstName: new FormControl('', 
+                            [Validators.required, 
+                             Validators.minLength(2)]),
+
+      lastName:  new FormControl('', 
+                            [Validators.required, 
+                             Validators.minLength(2)]),
+                             
+    })
+  });
   }
 
   reviewCartDetails() {
@@ -57,10 +66,13 @@ export class CheckoutComponent implements OnInit {
   onSubmit() {
     console.log("Handling the submit button");
 
+
+
+
     // set up order
     let order = new Order();
     
-
+  
     // get cart items
     const cartItems = this.cartService.cartItems;
 
@@ -99,4 +111,8 @@ export class CheckoutComponent implements OnInit {
     // navigate back to the products page
     this.router.navigateByUrl("/products");
   }
+
+  get firstName() { return this.checkoutFormGroup.get('user.firstName'); }
+  get lastName() { return this.checkoutFormGroup.get('user.lastName'); }
+  get email() { return this.checkoutFormGroup.get('user.email'); }
 }

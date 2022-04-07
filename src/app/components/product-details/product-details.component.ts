@@ -5,6 +5,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from 'src/app/interface/cart-item';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-details',
@@ -13,12 +14,15 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  closeResult = '';
+
   product: Product = new Product();
 
   constructor(private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -46,12 +50,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(form1: string) {
-
-    console.log("xddd" + form1);
-    console.log(`Adding to cart: ${this.product.name}, ${this.product.price}`);
     const theCartItem = new CartItem(this.product);
     this.cartService.addToCart(theCartItem);
 
+  }
+
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+    });
   }
 
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../interface/product';
 import { map } from 'rxjs/operators';
 import { Category } from '../interface/category';
@@ -28,9 +28,9 @@ export class ProductService {
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
   public getProductListByCategory(thePage: number,
-    thePageSize: number, category_id: string, gender: string, sort_option: number): Observable<GetResponseProducts> {
+    thePageSize: number, category_id: string, gender: string, price: string, sort_option: number): Observable<GetResponseProducts> {
       
-        const searchUrl = `${this.apiUrl}/product/filter/?page=${thePage}&size=${thePageSize}&category=${category_id}&sort_option=${sort_option}&gender=${gender}`;
+        const searchUrl = `${this.apiUrl}/product/filter/?page=${thePage}&size=${thePageSize}&category=${category_id}&sort_option=${sort_option}&gender=${gender}&price=${price}`;
         return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
