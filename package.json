@@ -26,6 +26,7 @@
     "@popperjs/core": "^2.11.4",
     "angular-notifier": "^11.0.0",
     "bootstrap": "^5.1.2",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
