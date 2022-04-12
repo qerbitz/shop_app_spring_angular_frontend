@@ -84,6 +84,7 @@ export class CheckoutComponent implements OnInit {
     order.totalPrice = this.totalPrice;
     order.totalQuantity = this.totalQuantity;
     order.orderItems = orderItems;
+    order.user = JSON.parse(localStorage.getItem('user'));
 
     // call REST API via the CheckoutService
     //this.checkoutService.placeOrder(order);
