@@ -1,5 +1,7 @@
 App avalaible on url: https://spring-angular-frontend-shop.herokuapp.com/
 
+Secured by jwt token, just logged user can make orders.
+
 
 
 
