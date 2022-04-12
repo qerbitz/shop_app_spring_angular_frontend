@@ -1,3 +1,9 @@
+App avalaible on url: https://spring-angular-frontend-shop.herokuapp.com/
+
+
+
+
+
 # Shopfrontendapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
